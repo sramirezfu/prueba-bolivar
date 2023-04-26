@@ -22,8 +22,7 @@ const Home: NextPage<Props> = ({ data }) => {
             tokenURL = hash.substring(1).split("&").find(elem => elem.startsWith("access_token"))!.split("=")[1];
             window.location.hash = ""
             window.localStorage.setItem("token", tokenURL);
-            const token = tokenURL;
-            dispatch(setToken(token));
+            dispatch(setToken(tokenURL));
         }
     }, []);
 
