@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const getRecommende = async () => {
-
     try {
         const token = process.env.NEXT_PUBLIC_TOKEN;
         let config = {
