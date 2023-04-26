@@ -4,7 +4,8 @@ import Head from 'next/head'
 import Recommende from '@component/components/recommende/Recommende';
 import getRecommende from '@component/helpers/getRecommende';
 import { RecommendFivesongs } from '@component/interfaces/recommende.interface';
-import { TokenContext } from "@component/context";
+import { useDispatch } from "react-redux";
+import { setToken } from "@component/slices/authSlice";
 
 interface Props {
     data: RecommendFivesongs,
@@ -12,7 +13,7 @@ interface Props {
 
 const Home: NextPage<Props> = ({ data }) => {
 
-    const context = useContext(TokenContext);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const hash = window.location.hash
@@ -21,8 +22,8 @@ const Home: NextPage<Props> = ({ data }) => {
             tokenURL = hash.substring(1).split("&").find(elem => elem.startsWith("access_token"))!.split("=")[1];
             window.location.hash = ""
             window.localStorage.setItem("token", tokenURL);
-            console.log(tokenURL);
-            context?.setToken(tokenURL);
+            const token = tokenURL;
+            dispatch(setToken(token));
         }
     }, []);
 

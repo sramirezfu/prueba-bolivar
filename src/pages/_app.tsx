@@ -1,15 +1,23 @@
 import type { AppProps } from 'next/app'
-import { Provider } from 'react-redux'
 import Layout from '@component/components/layouts/Layout'
 import '@component/styles/globals.scss'
-import { TokenProvider } from '@component/context'
+
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import authReducer from '../slices/authSlice';
+
+const store = configureStore({
+    reducer: {
+        auth: authReducer,
+    },
+});
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <TokenProvider>
+        <Provider store={store}>
             <Layout>
                 <Component {...pageProps} />
             </Layout>
-        </TokenProvider>
+        </Provider>
     )
 }
