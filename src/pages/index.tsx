@@ -6,6 +6,7 @@ import getRecommende from '@component/helpers/getRecommende';
 import { RecommendFivesongs } from '@component/interfaces/recommende.interface';
 import { useDispatch } from "react-redux";
 import { setToken } from "@component/slices/authSlice";
+import { store } from "../../store";
 
 interface Props {
     data: RecommendFivesongs,
@@ -54,6 +55,8 @@ const Home: NextPage<Props> = ({ data }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
     const data = await getRecommende();
+    const state = store.getState();
+
     return {
         props: {
             data,

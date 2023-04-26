@@ -17,7 +17,6 @@ interface Props {
 const Search: NextPage<Props> = ({ data }) => {
     const [artists, setArtists] = useState<DataArtis>();
     const token = useSelector((state: RootState) => state.auth.token);
-    console.log(token);
 
     const newSearch = async (word: string) => {
         const artist = await getArtist(word);
