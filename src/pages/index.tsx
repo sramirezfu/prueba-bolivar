@@ -22,7 +22,6 @@ const Home: NextPage<Props> = ({ data }) => {
             window.location.hash = ""
             window.localStorage.setItem("token", tokenURL);
             console.log(tokenURL);
-
             context?.setToken(tokenURL);
         }
     }, []);
@@ -54,7 +53,6 @@ const Home: NextPage<Props> = ({ data }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, query }) => {
-
     const data = await getRecommende();
     return {
         props: {

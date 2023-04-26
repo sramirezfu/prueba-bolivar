@@ -5,9 +5,6 @@ type AuthActionType =
 
 
 export const TokenReducer = (state: AuthState, action: AuthActionType) => {
-    console.log(state);
-
-    console.log(state, action);
     switch (action.type) {
         case '[AUTH] - SetToken':
             return {

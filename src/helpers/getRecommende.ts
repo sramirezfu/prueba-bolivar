@@ -3,7 +3,7 @@ import axios from "axios";
 const getRecommende = async () => {
 
     try {
-        const token = 'BQAeZIPnjC9_1AAlEytjnvYJ1mOlgUgPmCS8HA8McqVryT60DVF4GEvvPVhLqJ750-oU3xCLRfEE9dEVAMR2r6f2IIsQnwCwsVgo6a31pwt7Viq7zrkYJr7ki6KeqKQh5e9oQMdvCGnYMMgasmk6042Z0fTQlY0GWGbKWzZ3Ufe5Vii2dEkB5_3ZhBujpsdDpreTCBVx';
+        const token = process.env.NEXT_PUBLIC_TOKEN;
         let config = {
             headers: {
                 'Authorization': `Bearer ${token}`,
